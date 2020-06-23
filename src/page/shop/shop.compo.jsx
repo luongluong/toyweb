@@ -15,8 +15,8 @@ class Items extends React.Component {
           return(
                 <div>{
              
-                    collections.map(({id , items,title})=>(
-                        <Allproducts key={id} items={items} title={title} />
+                    collections.map(({id ,...otherItemProps})=>(
+                        <Allproducts key={id} {...otherItemProps} />
                     )) 
                  }
                 </div>

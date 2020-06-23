@@ -1,6 +1,8 @@
 import React from 'react';
+import './allproducts.style.scss';
+import AllStyles from '../allstyles-compo/allstyles-compo';
 
-//render all Items to the shop page
+//render all  Items in html to the shop page
 // must be imported to shop page
 
 const Allproducts =({title,items}) =>(
@@ -9,10 +11,10 @@ const Allproducts =({title,items}) =>(
         <h1 className='title'>{title}</h1>
         <div className='products'> 
             {   //mapping Items to the page
-           items && items.map( (item) =>    
-                <div key={item.id}>
-                    {item.name}
-                </div>
+
+           items && items.map( ({id, ...ItemsProps}) =>    
+                <AllStyles key={id}{...ItemsProps}/>
+                    //{item.name} 
             )  
             }
         </div>

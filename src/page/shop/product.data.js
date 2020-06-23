@@ -8,7 +8,9 @@ const Product_Data = [
           id: 1,
           name: 'Spider Man',
           // imageUrl: 'https://i.ibb.co/ZYW3VTp/brown-brim.png',
-          imageUrl: "https://cdn.shopify.com/s/files/1/0169/6995/7440/products/E93175L00_5010993715527_pkg_20_Large_300DPI_2000x.jpg?v=1590116853",
+          // "https://cdn.shopify.com/s/files/1/0169/6995/7440/products/E93175L00_5010993715527_pkg_20_Large_300DPI_2000x.jpg?v=1590116853",
+
+          imageUrl: 'https://i.ibb.co/ZYW3VTp/brown-brim.png',
           price: 25
         },
         {
@@ -85,7 +87,7 @@ const Product_Data = [
         {
           id: 12,
           name: 'Wonder Woman',
-          // imageUrl: 'https://i.ibb.co/bPmVXyP/black-converse.png',
+          // imageUrl: 'https://www.mezcotoyz.com/mas_assets/cache/image/2/1/d/d/8669.Jpg',
           imageUrl: "https://www.mezcotoyz.com/mas_assets/cache/image/2/1/d/d/8669.Jpg",
           price: 80
         },
