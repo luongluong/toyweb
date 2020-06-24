@@ -8,10 +8,10 @@ const Product_Data = [
           id: 1,
           name: 'Spider Man',
           // imageUrl: 'https://i.ibb.co/ZYW3VTp/brown-brim.png',
-          // "https://cdn.shopify.com/s/files/1/0169/6995/7440/products/E93175L00_5010993715527_pkg_20_Large_300DPI_2000x.jpg?v=1590116853",
+           imageUrl: "https://cdn.shopify.com/s/files/1/0169/6995/7440/products/E93175L00_5010993715527_pkg_20_Large_300DPI_2000x.jpg?v=1590116853",
 
-          imageUrl: 'https://i.ibb.co/ZYW3VTp/brown-brim.png',
-          price: 25
+         // imageUrl: 'https://i.ibb.co/ZYW3VTp/brown-brim.png',
+          price: '25'
         },
         {
           id: 2,
@@ -206,9 +206,9 @@ const Product_Data = [
         },
         {
           id: 29,
-          name: 'Kid buu',
+          name: 'Cell Final Form',
           // imageUrl: 'https://media.entertainmentearth.com/assets/images/c24dca592e1b48179d93d2f414dae3e5lg.jpg',
-          imageUrl: "/images/c24dca592e1b48179d93d2f414dae3e5lg.jpg",
+          imageUrl: "https://media.entertainmentearth.com/assets/images/2a06db08a9084d6ab3dd95d23e614ff4lg.jpg",
           price: 20
         }
       ]
@@ -222,7 +222,7 @@ const Product_Data = [
           id: 30,
           name: 'Shadow Ranger',
           // imageUrl: 'https://i.ibb.co/xJS0T3Y/camo-vest.png',
-          imageUrl: "/https://cdn.shopify.com/s/files/1/0169/6995/7440/products/E5931AS00_Power_Rangers_Lightning_Collection_S.P.D._Shadow_Ranger__inpack_2000x.jpg?v=1571858250",
+          imageUrl: "https://cdn.shopify.com/s/files/1/0169/6995/7440/products/E5931AS00_Power_Rangers_Lightning_Collection_S.P.D._Shadow_Ranger__inpack_2000x.jpg?v=1571858250",
           price: 25
         },
         {
@@ -243,7 +243,7 @@ const Product_Data = [
           id: 33,
           name: 'Mighty Morphin White Ranger',
           // imageUrl: 'https://i.ibb.co/RvwnBL8/pink-shirt.png',
-          imageUrl: "/imageshttps://cdn.shopify.com/s/files/1/0169/6995/7440/products/E5929AS00_Power_Rangers_Lightning_Collection_Mighty_Morphin_White_Ranger_Figure_inpack_2000x.jpg?v=1571852492/shop-img/mens/pink-shirt.png",
+          imageUrl: "https://cdn.shopify.com/s/files/1/0169/6995/7440/products/E5929AS00_Power_Rangers_Lightning_Collection_Mighty_Morphin_White_Ranger_Figure_inpack_2000x.jpg?v=1571852492/shop-img/mens/pink-shirt.png",
           price: 25
         },
         {

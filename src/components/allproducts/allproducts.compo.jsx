@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './allproducts.style.scss';
 import AllStyles from '../allstyles-compo/allstyles-compo';
 
@@ -12,7 +13,9 @@ const Allproducts =({title,items}) =>(
         <div className='products'> 
             {   //mapping Items to the page
 
-           items && items.map( ({id, ...ItemsProps}) =>    
+           items && items
+           .filter((items,idx)=> idx<5)
+           .map( ({id, ...ItemsProps}) =>    
                 <AllStyles key={id}{...ItemsProps}/>
                     //{item.name} 
             )  

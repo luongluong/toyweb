@@ -20,7 +20,7 @@ class Directory extends React.Component{
                 {
                     title: 'DC',
                     imageUrl:'https://wallpapercave.com/wp/wp2319861.jpg',
-                    id:2,
+                   id:2,
                     linkUrl:''
                 },
 

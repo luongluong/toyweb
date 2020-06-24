@@ -3,9 +3,11 @@ import './allstyles.style.scss';
 
 const AllStyles = ({id,name,price,imageUrl}) =>(
     <div className='all-styles'>
-        <div className='image-background'
-                style={{backgroundImage: `url(${imageUrl})`}} />
+        <div className='image'
+                style={{backgroundImage: `url(${imageUrl})`}} 
         
+        
+        />
 
         <div className='name-and-price'>
             <span className='price'>  {price} </span>
