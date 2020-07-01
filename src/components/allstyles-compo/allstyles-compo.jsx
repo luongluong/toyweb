@@ -6,7 +6,6 @@ const AllStyles = ({id,name,price,imageUrl}) =>(
         <div className='image'
                 style={{backgroundImage: `url(${imageUrl})`}} 
         
-        
         />
 
         <div className='name-and-price'>
