@@ -17,7 +17,6 @@ const Allproducts =({title,items}) =>(
            .filter((items,idx)=> idx<5)
            .map( ({id, ...ItemsProps}) =>    
                 <AllStyles key={id}{...ItemsProps}/>
-                    //{item.name} 
             )  
             }
         </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import './sign-in.style.scss';
+
 //import { Form,FormGroup, Label, Input} from 'reactapp';
 //import { Button, FormControl, ControlLabel } from "react-bootstrap";
 
@@ -8,6 +9,7 @@ class SignIn extends React.Component{
     constructor(props){
     super(props);
         this.state ={
+
             email:'',
             password:''
         };
@@ -47,7 +49,7 @@ class SignIn extends React.Component{
                 name='email'  
                 type={this.state.email} 
                 placeholder="Enter Email" 
-                onChange={this.setmail}
+                onChange={this.valEmail}
                 required
                 />
                 
@@ -56,7 +58,7 @@ class SignIn extends React.Component{
                 name='password' 
                 type={this.state.password} 
                 placeholder="Enter Password" 
-                onChange={this.setPass}
+                onChange={this.valPass}
                 required
                 />
 
@@ -64,10 +66,10 @@ class SignIn extends React.Component{
                <button className='login-button' type="submit">Login</button>
               </form>
 
-            <form>
+            <form action='/sign-up'>
             <p></p>
-            <button className='signup-button'  type="submit">Sign up</button>
-
+            <button className='signup-button'   type="submit">Create Account</button>
+              
             </form>
           </div>
         )
