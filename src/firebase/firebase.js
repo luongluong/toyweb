@@ -1,6 +1,7 @@
-import firebase from './firebase/app';
-import app from './firebase/app';
+import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/firestore';
+//import { useRef } from 'react';
 
 const firebaseConfig = {
     apiKey: "AIzaSyAGtrXbRbW3G4OuwG3wmW3lFzKQw3Ylu7M",
@@ -13,8 +14,38 @@ const firebaseConfig = {
     measurementId: "G-ETKEY24BVN"
   };
 
+  // function to store users` info in database
+export const createUserProfileDocument = async (userAuth, additionalData)=>{
+    if(!userAuth) return; //if user not exist, exist
+
+    //???
+    const userRef= firestore.doc( `users/${userAuth.uid}` );
+    const snapShot = await userRef.get();
+    
+    //if user does not exist, create Data + information 
+    // in the try
+    if(!snapShot.exists){
+      const {userName, email} = userAuth;
+      const createdTime= new Date();
+
+      try{
+        await userRef.set({
+          userName,
+          email,
+          createdTime,
+          ...additionalData
+        })
+      }catch (error){
+        console.log('error occur',error.message);
+      }
+    }
+    // return for future use
+    return userRef;
+};
+
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   // Get the Auth service for the default app
- export const defaultAuth = firebase.auth();
- 
+ export const auth = firebase.auth();
+ export const firestore= firebase.firestore();
+ export default firebase;

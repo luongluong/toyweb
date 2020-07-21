@@ -1,6 +1,6 @@
 import React from'react';
 import './sign-up.style.scss';
-
+import {auth, createUserProfileDocument} from '../../firebase/firebase.js';
 // need to add Auth from google for 
 
 class Signup extends React.Component{
@@ -15,65 +15,104 @@ class Signup extends React.Component{
         };
     }
 
-    valEmail = event =>{
+    handleSubmit= async event =>{
+        event.preventDefault();
+        const {username,email,password,confirmPass} =this.state;
+        if(password !== confirmPass){
+            alert("password do not match");
+            return;
+        }
+
+        try{
+            
+           const {user} = await auth.createUserWithEmailAndPassword(email, password);
+          
+            await createUserProfileDocument(user, {username});
+
+           this.setState({
+            username:'',
+            email:'',
+            password:'',
+            confirmPass:''
+           });
+           
+           
+        } catch(error)
+        {
+            console.error(error);
+        }
+    }
+
+    handleChange = event =>{
+        const{name, value}= event.target;
+        this.setState({ [name] : value });
+    };
+
+ /*   valEmail = event =>{
         const {email ,setmail}=  event.target;
   
-        this.setState({ [email]: setmail });
+        this.setState({ [setmail]: email });
       }
       valPass = event =>{
         const {pass ,setPass}=  event.target;
-        this.setState({ [pass]: setPass });
+        this.setState({ [setPass]: pass });
       }
       
     valUser= event=>{
         const {user ,setUser}=  event.target;
-        this.setState({ [user]: setUser });
+        this.setState({ [setUser]: user });
     }
     valConfirm= event=>{
         const {confirm ,setConfirm}=  event.target;
-        this.setState({ [confirm]: setConfirm });
-    }
+        this.setState({ [setConfirm]: confirm });
+    } */
     render(){
+        const {username,email,password,confirmPass} =this.state;
         return(
             <div className='Sign-up'>
 
                 <form onSubmit={this.handleSubmit}>
 
-                <div className='User'> <b>User</b></div>
-                <input className='User'
-                name='user'  
-                type={this.state.email} 
-                placeholder="Enter User Name" 
-                onChange={this.valUser}
+                <div className='user'> <b>User</b></div>
+                <input className='user'
+                name='username'  
+                type='username'
+                value={username}
+               // placeholder="Enter Email" 
+                onChange={this.handleChange}
                 required
                 />
 
-                <div className='email'> <b>Email</b></div>
-                <input className='Email'
+                <div className='Email'> <b>Email</b></div>
+                <input className='email'
                 name='email'  
-                type={this.state.email} 
-                placeholder="Enter Email" 
-                onChange={this.valEmail}
+                type='email'
+                value={email}
+               // placeholder="Enter Email" 
+                onChange={this.handleChange}
                 required
                 />
                 
-                <div className='pass'><b>Password</b></div>
-                <input className='Password'
+                <div className='Password'><b>Password</b></div>
+                <input className='password'
                 name='password' 
-                type={this.state.password} 
-                placeholder="Enter Password" 
-                onChange={this.valPass}
+                type='password'  
+                value={password}
+               // placeholder="Enter Password" 
+                onChange={this.handleChange}
                 required
                 />
 
-                <div className='confirm'><b>Confirm Password</b></div>
-                <input className='confirm'
-                name='confirm' 
-                type={this.state.password} 
-                placeholder="confirm" 
-                onChange={this.valConfirm}
+                <div className='Password'><b>Confirm password</b></div>
+                <input className='password'
+                name='confirmPass' 
+                type='password'  
+                value={confirmPass}
+               // placeholder="Enter Password" 
+                onChange={this.handleChange}
                 required
                 />
+
 
                 <button type='submit'> Sign up</button>
 
