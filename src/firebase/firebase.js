@@ -1,7 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
-//import { useRef } from 'react';
 
 const firebaseConfig = {
     apiKey: "AIzaSyAGtrXbRbW3G4OuwG3wmW3lFzKQw3Ylu7M",
@@ -15,18 +14,29 @@ const firebaseConfig = {
   };
 
   // function to store users` info in database
-export const createUserProfileDocument = async (userAuth, additionalData)=>{
-    if(!userAuth) return; //if user not exist, exist
+export const createUserProfileDocument = async (userAuth, additionalData)=>{  
+     
+  if(!userAuth) return; //if user not exist, exist
 
-    //???
+    //  doc of user generated when created 
     const userRef= firestore.doc( `users/${userAuth.uid}` );
+
+    //get infor from userRef and then saved to snapShot
     const snapShot = await userRef.get();
+
+    console.log(snapShot); // this does work
     
+//Stack overflow code
+//    firebase.database().ref("users").child(user.uid).set(...)
+
     //if user does not exist, create Data + information 
     // in the try
     if(!snapShot.exists){
-      const {userName, email} = userAuth;
+      
+      const {email} = userAuth; 
+      const {userName} = userAuth;
       const createdTime= new Date();
+      console.log(userAuth.email); 
 
       try{
         await userRef.set({

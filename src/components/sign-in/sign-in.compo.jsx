@@ -1,5 +1,6 @@
 import React from 'react';
 import './sign-in.style.scss';
+import {auth} from '../../firebase/firebase.js';
 
 //import { Form,FormGroup, Label, Input} from 'reactapp';
 //import { Button, FormControl, ControlLabel } from "react-bootstrap";
@@ -16,17 +17,33 @@ class SignIn extends React.Component{
        
     }
 
-    handleSubmitvent= event =>{  // set back to empty (Controlled Form in React)
+    handleSubmit= async event =>{  // set back to empty (Controlled Form in React)
       event.preventDefault();
-      this.setState({email:'', password:''});
-    }
+      const {email,password} =this.state;
+      
+      console.log("made it into the submit event");
+      try{
+        // creates the object 
+        await auth.signInWithEmailAndPassword(email, password);
+        this.setState({email:'', password:''});
+
+      } catch(error){
+        console.log(error)
+        console.log("there was an error");
+      }
+    };
 
     /*handleChange = event =>{
       const {val ,name}=  event.target;
       this.setState({ [val]: name });
     } */
+    handleChange = event =>{
+      console.log("inside the handle change");
+      const{name, value}= event.target;
+      this.setState({ [name] : value });
+  };
 
-    valEmail = event =>{
+/*    valEmail = event =>{
       const {email ,setmail}=  event.target;
 
       this.setState({ [email]: setmail });
@@ -34,41 +51,45 @@ class SignIn extends React.Component{
     valPass = event =>{
       const {pass ,setPass}=  event.target;
       this.setState({ [pass]: setPass });
-    }
+    }   */
 
     
     render(){
+      const {email,password} =this.state;
+
         return(
           
           <div className='Sign-in'>
 
               <form onSubmit={this.handleSubmit}> 
               
-                <div className='email'> <b>Email</b></div>
-                <input className='Email'
+              <div className='Email'> <b>Email</b></div>
+                <input className='email'
                 name='email'  
-                type={this.state.email} 
-                placeholder="Enter Email" 
-                onChange={this.valEmail}
+                type='email'
+                value={email}
+               // placeholder="Enter Email" 
+                onChange={this.handleChange}
                 required
                 />
                 
-                <div className='pass'><b>Password</b></div>
-                <input className='Password'
+                <div className='Password'><b>Password</b></div>
+                <input className='password'
                 name='password' 
-                type={this.state.password} 
-                placeholder="Enter Password" 
-                onChange={this.valPass}
+                type='password'  
+                value={password}
+               // placeholder="Enter Password" 
+                onChange={this.handleChange}
                 required
                 />
 
               <p></p>
-               <button className='login-button' type="submit">Login</button>
+               <button type='submit'>Login</button>
               </form>
 
             <form action='/sign-up'>
             <p></p>
-            <button className='signup-button'   type="submit">Create Account</button>
+            <button className='signup-button'  type="submit">Create Account</button>
               
             </form>
           </div>
