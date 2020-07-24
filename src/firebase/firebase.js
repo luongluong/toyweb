@@ -14,17 +14,19 @@ const firebaseConfig = {
   };
 
   // function to store users` info in database
-export const createUserProfileDocument = async (userAuth, additionalData)=>{  
-     
+export const createUserProfileDocument = async (userAuth)=>{  
+     console.log("entered the db saving ");
   if(!userAuth) return; //if user not exist, exist
-
+  
+    console.log("userAuth is allowed and we are saving to the db ");
     //  doc of user generated when created 
     const userRef= firestore.doc( `users/${userAuth.uid}` );
 
     //get infor from userRef and then saved to snapShot
+    // checks if the user exists allready in the database 
     const snapShot = await userRef.get();
 
-    console.log(snapShot); // this does work
+    console.log(); // this does work
     
 //Stack overflow code
 //    firebase.database().ref("users").child(user.uid).set(...)
@@ -32,18 +34,16 @@ export const createUserProfileDocument = async (userAuth, additionalData)=>{
     //if user does not exist, create Data + information 
     // in the try
     if(!snapShot.exists){
-      
       const {email} = userAuth; 
       const {userName} = userAuth;
       const createdTime= new Date();
-      console.log(userAuth.email); 
+      console.log(userName);
 
       try{
         await userRef.set({
           userName,
           email,
           createdTime,
-          ...additionalData
         })
       }catch (error){
         console.log('error occur',error.message);

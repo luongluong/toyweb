@@ -25,10 +25,18 @@ class Signup extends React.Component{
         }
 
         try{
-            
-           const {user} = await auth.createUserWithEmailAndPassword(email, password);
-          
-           await createUserProfileDocument(user, {username});
+            console.log("entered the try catch");
+            // this is sending a command to the backend to create the user
+            // then returns a user object with the varibles email and password  
+            var {user} = await auth.createUserWithEmailAndPassword(email, password);
+            console.log("starting the function call ");
+            // because to create the user entry in the db we beed also a username 
+            // thus in js we can just create a new object with a username field 
+            // then save it to that object 
+            user.userName = username;
+            // parameters require const variables 
+            const superUser = user
+           await createUserProfileDocument(superUser);
 
            this.setState({
             username:'',
@@ -123,3 +131,7 @@ class Signup extends React.Component{
     }
 }
 export default Signup;
+
+
+
+ 
